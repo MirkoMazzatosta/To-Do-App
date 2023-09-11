@@ -24,6 +24,12 @@ function addTask() {
 }
 }
 
+function removeLastLine() {
+  const list = document.getElementById('taskList');
+  const lastLine = list.lastElementChild;
+  list.removeChild(lastLine);
+}
+
 function removeAllTasks() {
   var ul = document.getElementById("taskList");
   while (ul.firstChild) {
