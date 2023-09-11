@@ -1,6 +1,9 @@
 function addTask() {
     // Get the input value
     var task = document.getElementById("taskInput").value;
+    if (task == "") {
+      alert("Please, enter a value in the input box!");
+    } else {
 
     // Create a new list item
     var li = document.createElement("li");
@@ -19,10 +22,11 @@ function addTask() {
     removeButton.addEventListener("click", removeTask);
     li.appendChild(removeButton);
 }
+}
 
 function removeAllTasks() {
-    var ul = document.getElementById("taskList");
-    while (ul.firstChild) {
-      ul.removeChild(ul.firstChild);
-    }
+  var ul = document.getElementById("taskList");
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
   }
+}
