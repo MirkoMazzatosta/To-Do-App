@@ -1,27 +1,21 @@
 function addTask() {
-    // Get the input value
-    var task = document.getElementById("taskInput").value;
-    if (task == "") {
-      alert("Please, enter a value in the input box!");
-    } else {
-
-    // Create a new list item
-    var li = document.createElement("li");
-    var text = document.createTextNode(task);
-    li.appendChild(text);
-
-    // Add the list item to the task list
-    document.getElementById("taskList").appendChild(li);
-
-    // Clear the input field
-    document.getElementById("taskInput").value = "";
-
-    var removeButton = document.createElement("button");
-    removeButton.innerHTML = "Remove";
-    removeButton.classList.add("remove");
-    removeButton.addEventListener("click", removeTask);
-    li.appendChild(removeButton);
-}
+  const taskInput = document.getElementById('taskInput');
+  const taskList = document.getElementById('taskList');
+  const task = taskInput.value.trim();
+  if (task) {
+    const li = document.createElement('li');
+    const div = document.createElement('div');
+    const span = document.createElement('span');
+    span.textContent = task;
+    const button = document.createElement('button');
+    button.textContent = 'Delete';
+    button.addEventListener('click', () => li.remove());
+    div.appendChild(button);
+    li.appendChild(span);
+    li.appendChild(button);
+    taskList.appendChild(li);
+    taskInput.value = '';
+  }
 }
 
 function removeLastLine() {
@@ -35,4 +29,9 @@ function removeAllTasks() {
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild);
   }
+}
+
+function removeLine() {
+  const line = document.getElementById('taskList').querySelector('li:nth-child(2)');
+  line.remove();
 }
